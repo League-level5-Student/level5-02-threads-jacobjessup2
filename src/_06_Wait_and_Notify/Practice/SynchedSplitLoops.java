@@ -17,7 +17,7 @@ printed in order.
 
 public class SynchedSplitLoops {
 	static int counter = 0;
-	
+	static Object lock = new Object();
 	public static void main(String[] args) {
 		Thread t1 = new Thread(() -> {
 			for(int i = 0; i < 100000; i++) {
@@ -26,6 +26,7 @@ public class SynchedSplitLoops {
 		});
 		
 		Thread t2 = new Thread(() -> {
+			
 			for(int i = 0; i < 100000; i++) {
 				System.out.println(counter);
 			}
@@ -42,4 +43,5 @@ public class SynchedSplitLoops {
 		}
 		
 	}
+	
 }
